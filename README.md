@@ -37,7 +37,12 @@ php artisan key:generate
 ./vendor/bin/sail artisan migrate
 ```
 
-7. Заполните базу тестовыми данными (сидер):
+7. Создайте символическую ссылку для хранения медиафайлов:
+```bash
+./vendor/bin/sail artisan storage:link
+```
+
+8. Заполните базу тестовыми данными (сидер):
 ```bash
 ./vendor/bin/sail artisan db:seed
 ```
