@@ -1,0 +1,617 @@
+{
+  "timestamp": "20260114_114658",
+  "base_url": "http://localhost/api/v1",
+  "tests": [
+    {
+      "name": "Create News 1",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost/api/v1/news",
+        "body": {
+          "title": "Test News 1",
+          "description": "This is a test news description"
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "data": {
+            "id": 29,
+            "title": "Test News 1",
+            "description": "This is a test news description",
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:58.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Get All News",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost/api/v1/news",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": [
+            {
+              "id": 29,
+              "title": "Test News 1",
+              "description": "This is a test news description",
+              "created_at": "2026-01-14T06:46:58.000000Z",
+              "updated_at": "2026-01-14T06:46:58.000000Z"
+            },
+            {
+              "id": 28,
+              "title": "Test News 2",
+              "description": "Second test news",
+              "created_at": "2026-01-14T06:45:00.000000Z",
+              "updated_at": "2026-01-14T06:45:00.000000Z"
+            },
+            {
+              "id": 27,
+              "title": "Updated News Title",
+              "description": "Updated description",
+              "created_at": "2026-01-14T06:44:59.000000Z",
+              "updated_at": "2026-01-14T06:45:00.000000Z"
+            },
+            {
+              "id": 26,
+              "title": "Test News 2",
+              "description": "Second test news",
+              "created_at": "2026-01-14T06:41:23.000000Z",
+              "updated_at": "2026-01-14T06:41:23.000000Z"
+            },
+            {
+              "id": 25,
+              "title": "Updated News Title",
+              "description": "Updated description",
+              "created_at": "2026-01-14T06:41:22.000000Z",
+              "updated_at": "2026-01-14T06:41:23.000000Z"
+            }
+          ],
+          "pagination": {
+            "next_cursor": 25,
+            "has_more": true
+          }
+        }
+      }
+    },
+    {
+      "name": "Get News by ID",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost/api/v1/news/29",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": {
+            "id": 29,
+            "title": "Test News 1",
+            "description": "This is a test news description",
+            "comments": [],
+            "comments_pagination": {
+              "next_cursor": null,
+              "has_more": false
+            },
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:58.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Update News",
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost/api/v1/news/29",
+        "body": {
+          "title": "Updated News Title",
+          "description": "Updated description"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": {
+            "id": 29,
+            "title": "Updated News Title",
+            "description": "Updated description",
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:58.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Create News 2",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost/api/v1/news",
+        "body": {
+          "title": "Test News 2",
+          "description": "Second test news"
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "data": {
+            "id": 30,
+            "title": "Test News 2",
+            "description": "Second test news",
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:58.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Create Comment on News",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost/api/v1/news/29/comments",
+        "body": {
+          "text": "This is a comment on the news"
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "data": {
+            "id": 189,
+            "user_id": 11,
+            "text": "This is a comment on the news",
+            "comment_id": null,
+            "user": {
+              "id": 11,
+              "name": "Test User",
+              "email": "test@example.com"
+            },
+            "comments": [],
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:58.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Get Comments for News",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost/api/v1/news/29/comments",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": [
+            {
+              "id": 189,
+              "user_id": 11,
+              "text": "This is a comment on the news",
+              "comment_id": null,
+              "user": {
+                "id": 11,
+                "name": "Test User",
+                "email": "test@example.com"
+              },
+              "comments": [],
+              "created_at": "2026-01-14T06:46:58.000000Z",
+              "updated_at": "2026-01-14T06:46:58.000000Z"
+            }
+          ],
+          "pagination": {
+            "next_cursor": null,
+            "has_more": false
+          }
+        }
+      }
+    },
+    {
+      "name": "Create Video Post",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost/api/v1/video-posts",
+        "body": {
+          "title": "Test Video Post",
+          "description": "This is a test video post"
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "data": {
+            "id": 8,
+            "title": "Test Video Post",
+            "description": "This is a test video post",
+            "media": [
+              {
+                "id": 6,
+                "uuid": "fcf32e5b-94d1-4061-883e-44779aef7083",
+                "collection_name": "video",
+                "name": "test_video_1768373218",
+                "file_name": "test_video_1768373218.webm",
+                "mime_type": "video/webm",
+                "disk": "public",
+                "size": 1020732,
+                "url": "http://localhost/storage/6/test_video_1768373218.webm",
+                "custom_properties": [],
+                "created_at": "2026-01-14T06:46:58.000000Z",
+                "updated_at": "2026-01-14T06:46:58.000000Z"
+              }
+            ],
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:58.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Get All Video Posts",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost/api/v1/video-posts",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": [
+            {
+              "id": 8,
+              "title": "Test Video Post",
+              "description": "This is a test video post",
+              "media": [
+                {
+                  "id": 6,
+                  "uuid": "fcf32e5b-94d1-4061-883e-44779aef7083",
+                  "collection_name": "video",
+                  "name": "test_video_1768373218",
+                  "file_name": "test_video_1768373218.webm",
+                  "mime_type": "video/webm",
+                  "disk": "public",
+                  "size": 1020732,
+                  "url": "http://localhost/storage/6/test_video_1768373218.webm",
+                  "custom_properties": [],
+                  "created_at": "2026-01-14T06:46:58.000000Z",
+                  "updated_at": "2026-01-14T06:46:58.000000Z"
+                }
+              ],
+              "created_at": "2026-01-14T06:46:58.000000Z",
+              "updated_at": "2026-01-14T06:46:58.000000Z"
+            },
+            {
+              "id": 7,
+              "title": "Updated Video Post Title",
+              "description": "Updated video description",
+              "media": [
+                {
+                  "id": 5,
+                  "uuid": "6ab3b78d-65ca-4f78-9f00-ddfe9fe347d8",
+                  "collection_name": "video",
+                  "name": "test_video_1768373099",
+                  "file_name": "test_video_1768373099.webm",
+                  "mime_type": "video/webm",
+                  "disk": "public",
+                  "size": 1020732,
+                  "url": "http://localhost/storage/5/test_video_1768373099.webm",
+                  "custom_properties": [],
+                  "created_at": "2026-01-14T06:45:00.000000Z",
+                  "updated_at": "2026-01-14T06:45:00.000000Z"
+                }
+              ],
+              "created_at": "2026-01-14T06:45:00.000000Z",
+              "updated_at": "2026-01-14T06:45:00.000000Z"
+            },
+            {
+              "id": 6,
+              "title": "Updated Video Post Title",
+              "description": "Updated video description",
+              "media": [
+                {
+                  "id": 4,
+                  "uuid": "b960c5a3-1dc0-4e81-a002-e627d92a6715",
+                  "collection_name": "video",
+                  "name": "test_video_1768372882",
+                  "file_name": "test_video_1768372882.webm",
+                  "mime_type": "video/webm",
+                  "disk": "public",
+                  "size": 1020732,
+                  "url": "http://localhost/storage/4/test_video_1768372882.webm",
+                  "custom_properties": [],
+                  "created_at": "2026-01-14T06:41:23.000000Z",
+                  "updated_at": "2026-01-14T06:41:23.000000Z"
+                }
+              ],
+              "created_at": "2026-01-14T06:41:23.000000Z",
+              "updated_at": "2026-01-14T06:41:23.000000Z"
+            },
+            {
+              "id": 5,
+              "title": "Updated Video Post Title",
+              "description": "Updated video description",
+              "media": [
+                {
+                  "id": 3,
+                  "uuid": "888d591e-0933-48bf-92b9-56f41712b4d0",
+                  "collection_name": "video",
+                  "name": "test_video_1768372683",
+                  "file_name": "test_video_1768372683.webm",
+                  "mime_type": "video/webm",
+                  "disk": "public",
+                  "size": 1020732,
+                  "url": "http://localhost/storage/3/test_video_1768372683.webm",
+                  "custom_properties": [],
+                  "created_at": "2026-01-14T06:38:03.000000Z",
+                  "updated_at": "2026-01-14T06:38:03.000000Z"
+                }
+              ],
+              "created_at": "2026-01-14T06:38:03.000000Z",
+              "updated_at": "2026-01-14T06:38:03.000000Z"
+            },
+            {
+              "id": 4,
+              "title": "Test Video Post",
+              "description": "This is a test video post",
+              "media": [
+                {
+                  "id": 2,
+                  "uuid": "b140d8eb-0f3b-46df-b46d-5647322229b1",
+                  "collection_name": "video",
+                  "name": "test_video_1768372419",
+                  "file_name": "test_video_1768372419.webm",
+                  "mime_type": "video/webm",
+                  "disk": "public",
+                  "size": 1020732,
+                  "url": "http://localhost/storage/2/test_video_1768372419.webm",
+                  "custom_properties": [],
+                  "created_at": "2026-01-14T06:33:40.000000Z",
+                  "updated_at": "2026-01-14T06:33:40.000000Z"
+                }
+              ],
+              "created_at": "2026-01-14T06:33:40.000000Z",
+              "updated_at": "2026-01-14T06:33:40.000000Z"
+            }
+          ],
+          "pagination": {
+            "next_cursor": 4,
+            "has_more": true
+          }
+        }
+      }
+    },
+    {
+      "name": "Get Video Post by ID",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost/api/v1/video-posts/8",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": {
+            "id": 8,
+            "title": "Test Video Post",
+            "description": "This is a test video post",
+            "media": [
+              {
+                "id": 6,
+                "uuid": "fcf32e5b-94d1-4061-883e-44779aef7083",
+                "collection_name": "video",
+                "name": "test_video_1768373218",
+                "file_name": "test_video_1768373218.webm",
+                "mime_type": "video/webm",
+                "disk": "public",
+                "size": 1020732,
+                "url": "http://localhost/storage/6/test_video_1768373218.webm",
+                "custom_properties": [],
+                "created_at": "2026-01-14T06:46:58.000000Z",
+                "updated_at": "2026-01-14T06:46:58.000000Z"
+              }
+            ],
+            "comments": [],
+            "comments_pagination": {
+              "next_cursor": null,
+              "has_more": false
+            },
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:58.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Update Video Post",
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost/api/v1/video-posts/8",
+        "body": {
+          "title": "Updated Video Post Title",
+          "description": "Updated video description"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": {
+            "id": 8,
+            "title": "Updated Video Post Title",
+            "description": "Updated video description",
+            "media": [
+              {
+                "id": 6,
+                "uuid": "fcf32e5b-94d1-4061-883e-44779aef7083",
+                "collection_name": "video",
+                "name": "test_video_1768373218",
+                "file_name": "test_video_1768373218.webm",
+                "mime_type": "video/webm",
+                "disk": "public",
+                "size": 1020732,
+                "url": "http://localhost/storage/6/test_video_1768373218.webm",
+                "custom_properties": [],
+                "created_at": "2026-01-14T06:46:58.000000Z",
+                "updated_at": "2026-01-14T06:46:58.000000Z"
+              }
+            ],
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:59.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Create Comment on Video Post",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost/api/v1/video-posts/8/comments",
+        "body": {
+          "text": "This is a comment on the video post"
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "data": {
+            "id": 190,
+            "user_id": 6,
+            "text": "This is a comment on the video post",
+            "comment_id": null,
+            "user": {
+              "id": 6,
+              "name": "Prof. Courtney Rogahn",
+              "email": "madyson.walsh@example.com"
+            },
+            "comments": [],
+            "created_at": "2026-01-14T06:46:59.000000Z",
+            "updated_at": "2026-01-14T06:46:59.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Get Comments for Video Post",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost/api/v1/video-posts/8/comments",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": [
+            {
+              "id": 190,
+              "user_id": 6,
+              "text": "This is a comment on the video post",
+              "comment_id": null,
+              "user": {
+                "id": 6,
+                "name": "Prof. Courtney Rogahn",
+                "email": "madyson.walsh@example.com"
+              },
+              "comments": [],
+              "created_at": "2026-01-14T06:46:59.000000Z",
+              "updated_at": "2026-01-14T06:46:59.000000Z"
+            }
+          ],
+          "pagination": {
+            "next_cursor": null,
+            "has_more": false
+          }
+        }
+      }
+    },
+    {
+      "name": "Create Reply to Comment",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost/api/v1/comments/189/replies",
+        "body": {
+          "text": "This is a reply to the comment"
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "data": {
+            "id": 191,
+            "user_id": 4,
+            "text": "This is a reply to the comment",
+            "comment_id": 189,
+            "user": {
+              "id": 4,
+              "name": "Elna Lang",
+              "email": "kali31@example.org"
+            },
+            "comments": [],
+            "created_at": "2026-01-14T06:46:59.000000Z",
+            "updated_at": "2026-01-14T06:46:59.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Update Comment",
+      "request": {
+        "method": "PUT",
+        "url": "http://localhost/api/v1/comments/189",
+        "body": {
+          "text": "Updated comment text"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "data": {
+            "id": 189,
+            "user_id": 11,
+            "text": "Updated comment text",
+            "comment_id": null,
+            "user": {
+              "id": 11,
+              "name": "Test User",
+              "email": "test@example.com"
+            },
+            "comments": [
+              {
+                "id": 191,
+                "user_id": 4,
+                "text": "This is a reply to the comment",
+                "comment_id": 189,
+                "user": {
+                  "id": 4,
+                  "name": "Elna Lang",
+                  "email": "kali31@example.org"
+                },
+                "created_at": "2026-01-14T06:46:59.000000Z",
+                "updated_at": "2026-01-14T06:46:59.000000Z"
+              }
+            ],
+            "created_at": "2026-01-14T06:46:58.000000Z",
+            "updated_at": "2026-01-14T06:46:59.000000Z"
+          }
+        }
+      }
+    },
+    {
+      "name": "Delete Comment (Reply)",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost/api/v1/comments/191",
+        "body": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "Comment deleted successfully"
+        }
+      }
+    }
+  ]
+}
