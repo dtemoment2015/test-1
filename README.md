@@ -6,8 +6,8 @@
 
 1. Клонируйте репозиторий:
 ```bash
-git clone <repository-url>
-cd test-2
+git clone https://github.com/dtemoment2015/test-1.git
+cd test-1
 ```
 
 2. Установите зависимости:
@@ -29,6 +29,8 @@ php artisan key:generate
 ```bash
 ./vendor/bin/sail up -d
 ```
+
+Если порт MySQL (3306) занят, можно изменить переменную `FORWARD_DB_PORT` в `.env` файле на другой порт, например `3307`.
 
 6. Выполните миграции:
 ```bash
