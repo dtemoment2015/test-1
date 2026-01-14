@@ -41,7 +41,7 @@ class Comment extends Model
      */
     public function comment(): BelongsTo
     {
-        return $this->belongsTo(Comment::class, 'comment_id');
+        return $this->belongsTo(Comment::class);
     }
 
     /**
@@ -49,6 +49,6 @@ class Comment extends Model
      */
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class, 'comment_id');
+        return $this->hasMany(Comment::class);
     }
 }
