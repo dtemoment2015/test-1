@@ -3,7 +3,7 @@
 .env.backup
 .env.production
 # Явно разрешаем .env файлы (если они где-то игнорируются)
-!.env
+.env
 !.env.example
 .phpactor.json
 .phpunit.result.cache
